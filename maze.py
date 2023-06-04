@@ -45,7 +45,7 @@ class Maze:
     
     def check_position(self, x: int, y: int):
         """ Função que checa se uma posição do labirinto está ocupada """
-        if x > self.table_width or y > self.table_height:
+        if x >= self.table_width or y >= self.table_height:
             return "invalid"
         if self.table[y][x] != " ":
             return "blocked"
