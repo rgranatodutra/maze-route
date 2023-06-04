@@ -5,12 +5,6 @@ class Maze:
         self.table_height = height
         self.table_width = width
 
-    def __str__(self):
-        maze_str = ""
-        for row in self.table:
-            maze_str += ' '.join(row) + '\n'
-        return maze_str
-
     def add_wall(self, start_pos_x: int, start_pos_y: int, wall_width: int, wall_height: int, alias: str="W"):
         """ Função que adiciona uma parede ao labirinto """
         possible_width = (self.table_width - start_pos_x - wall_width) >= 0
@@ -77,12 +71,18 @@ class Maze:
                 maze_str += ' '.join(row) + '\n'
             return print(maze_str)
 
-    def show(self):
+    def show(self, str_mode: bool):
         """ Função que mostra labirinto em formato de array """
         print(" ")
-        for row in self.table:
-            print(row)
-        print(" ")
+        if str_mode:
+            maze_str = ""
+            for row in self.table:
+                maze_str += ' '.join(row) + '\n'
+            return print(maze_str)
+        else:
+            for row in self.table:
+                print(row)
+        return print(" ")
     
     @staticmethod
     def create_from_dict(maze_dict: dict):
